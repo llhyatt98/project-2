@@ -1,15 +1,16 @@
 // jshint esversion: 6
 
-let main = function(){
+let controller = function(){
 
     let prefixURL = "http://api.flickr.com/services/feeds/photos_public.gne?tags=";
     let suffixURL = "&format=json&jsoncallback=?";
     //get value entered by user from textbox
-    let flickrTag = $("input").???();
+    let flickrTag = document.querySelector("input[type=text]").value; 
     let requestURL = prefixURL + flickrTag + suffixURL;
 
+    document.querySelector(".photos").innerHTML = "";
     //clear old photos
-    $(".photos").???("");
+    // $(".photos").???("");
 
   $.getJSON(requestURL, function(flickrResponse) {
     flickrResponse.items.forEach(function(item, index) {
@@ -24,7 +25,7 @@ let main = function(){
         // set the attribute to the url
         // contained in the response
         $img.attr("src", item.media.m);
-        $img.attr("width", "100");
+        $img.attr("width", "150");
 
         // attach the img tag to the main
         // photos element and then fade it in
@@ -37,4 +38,10 @@ let main = function(){
 };
 
 
-$(document).ready(main);
+// $(document).ready(controller);
+
+//without using jQuery 
+window.addEventListener("load", function() {  
+  //select the button and register the handler 
+  document.querySelector("button").addEventListener("click",  controller);   
+}); 

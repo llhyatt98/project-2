@@ -1,20 +1,24 @@
 // jshint esversion: 6
 
 let containsDuplicates = s => {
-  let cArr = [0, 0, 0, 0],
-    code;
-  for (let i in cArr) {
-    code = s[i].toUpperCase().charCodeAt(0) - 65;
-    //console.log(code);
-    if (cArr[code] > 0) {
-      return true;
-    } else {
-      cArr[i]++;
+  let cArr = new Array();
+  
+  var char; 
+  for (let i in s) {
+    if(cArr.includes(s[i])){
+      return true
+    }
+    else{
+      cArr.push(s[i])
     }
   }
   return false;
 };
 
+console.log(containsDuplicates("hello"));
+console.log(containsDuplicates("false"));
+console.log(containsDuplicates("truee"));
+console.log(containsDuplicates("abcdefABCDEF"));
 
 // revWords1
 let revWords1 = sentence => {
@@ -37,7 +41,7 @@ let revWords1 = sentence => {
   return ret_str
 }
 
-let test = revWords1("hello this is a test");
+let test = revWords1("Web App Dev");
 console.log(test);
 
 
@@ -63,7 +67,7 @@ let revWords2 = sentence => {
   return ret_str
 }
 
-let test2 = revWords2("hello this is a test");
+let test2 = revWords2("Web App Dev");
 console.log(test2);
 
 
@@ -89,7 +93,7 @@ let revWords3 = sentence => {
   return ret_str
 }
 
-let test3 = revWords2("hello this is a test");
+let test3 = revWords2("Web App Dev");
 console.log(test3);
 
 
